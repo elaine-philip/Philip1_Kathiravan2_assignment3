@@ -80,20 +80,41 @@ public class BinarySearchTreeDriver {
                         listI.insert(val);
                         listI.inOrder();
                     } else if (isDouble) {
+                        listD.inOrder();
                         System.out.print("Enter a number to insert: ");
                         scanCom = new Scanner(System.in);
                         double val = scanCom.nextDouble();
                         listD.insert(val);
-                        System.out.print("The list is : ");
+                        listD.inOrder();
                     } else if (isString) {
-                        System.out.print("Enter a number to insert: ");
+                        listS.inOrder();
+                        System.out.print("Enter a string to insert: ");
                         scanCom = new Scanner(System.in);
                         String val = scanCom.next();
                         listS.insert(val);
-                        System.out.print("The list is : ");
-
+                        listS.inOrder();
                     } // if
-                    // prints original list, inserts item, and prints new list
+                    // prints in-order tree, inserts item, and prints new tree
+                } else if (command.equals("r")) {
+                    if (isInt) {
+                        listI.inOrder();
+                        System.out.print("Enter a number to search: ");
+                        scanCom = new Scanner(System.in);
+                        int val = scanCom.nextInt();
+                        listI.retrieve(val);
+                    } else if (isDouble) {
+                        listD.inOrder();
+                        System.out.print("Enter a number to search: ");
+                        scanCom = new Scanner(System.in);
+                        double val = scanCom.nextDouble();
+                        listD.retrieve(val);
+                     } else if (isString) {
+                        listS.inOrder();
+                        System.out.print("Enter a string to search: ");
+                        scanCom = new Scanner(System.in);
+                        String val = scanCom.next();
+                        listS.retrieve(val);
+                     } // if
 
 /**
                 } else if (command.equals("l")) {
