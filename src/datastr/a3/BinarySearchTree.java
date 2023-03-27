@@ -3,6 +3,7 @@ package datastr.a3;
 public class BinarySearchTree<T extends Comparable<T>> {
 
     private NodeType<T> root;
+    int count = 0;
 
     public BinarySearchTree() {
         root = null;
@@ -51,6 +52,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
 
     public boolean retrieve(T item) {
         boolean isPresent = search(root, item);
+        System.out.println("Cousin count - " + count);
         if (isPresent == true) {
             System.out.println("Item is present in the tree");
             return true;
@@ -66,8 +68,10 @@ public class BinarySearchTree<T extends Comparable<T>> {
         } else if (item.compareTo(tree.info) == 0) { // if present - base case
             return true;
         } else if (item.compareTo(tree.info) < 0) {
+            count++;
             return search(tree.left, item);
         } else {
+            count++;
             return search(tree.right, item);
         } // if
     } //search
