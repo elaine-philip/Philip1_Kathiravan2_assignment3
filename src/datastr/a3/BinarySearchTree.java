@@ -84,7 +84,6 @@ public class BinarySearchTree<T extends Comparable<T>> {
         inOrderPrint(root); // recursion call
         System.out.println("");
     } // inOrder
-    // empty check?
 
     public boolean levNum(NodeType<T> tree, T item) {
         if (tree == null) { // not present
@@ -99,7 +98,6 @@ public class BinarySearchTree<T extends Comparable<T>> {
             return levNum(tree.right, item);
         } // if
      } // levNum
-
 
     public void levelOrder(NodeType<T> tree, int level, T key) {
         if (tree != null) {
