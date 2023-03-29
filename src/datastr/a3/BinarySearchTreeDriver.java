@@ -121,22 +121,34 @@ public class BinarySearchTreeDriver {
                         System.out.print("Enter a number to delete: ");
                         scanCom = new Scanner(System.in);
                         int val = scanCom.nextInt();
-                        listI.delete(val);
-                        listI.inOrder();
+                        if(listI.isPresent(val) == false) {
+                            System.out.println("This number is not present in the tree");
+                        } else {
+                            listI.delete(val);
+                            listI.inOrder();
+                        }
                     } else if (isDouble) {
                         listD.inOrder();
                         System.out.print("Enter a number to delete: ");
                         scanCom = new Scanner(System.in);
                         double val = scanCom.nextDouble();
-                        listD.delete(val);
-                        listD.inOrder();
+                        if(listD.isPresent(val) == false) {
+                            System.out.println("This number is not present in the tree");
+                        } else {
+                            listD.delete(val);
+                            listD.inOrder();
+                        }
                     } else if (isString) {
                         listS.inOrder();
                         System.out.print("Enter a string to delete: ");
                         scanCom = new Scanner(System.in);
                         String val = scanCom.next();
-                        listS.delete(val);
-                        listS.inOrder();
+                        if(listS.isPresent(val) == false) {
+                            System.out.println("Item is not present in the tree");
+                        } else {
+                            listS.delete(val);
+                            listS.inOrder();
+                        }
                     } // if
                     // prints in-order tree, deletes item, and prints new tree
                 } else if (command.equals("q")) {

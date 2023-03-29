@@ -81,51 +81,51 @@ public class BinarySearchTree<T extends Comparable<T>> {
         System.out.println("");
     } // inOrder
 
-
-    public void getCousins(NodeType<T> node) {
-
-    } // getCousins
+    public boolean isPresent(T key) {
+        return search(root,key);
+    } // isPresent
 
     public void delete(T key) {
         NodeType<T> curr = root;
         NodeType<T> parent = null;
-        boolean isLeftChild = false;
+        boolean isLChild = false;
 
-        // Traverse the tree to find the node with the key to delete
+        // traverse tree to find node w the right key
         while (curr != null) {
-            int cmp = key.compareTo(curr.info);
+            int comp = key.compareTo(curr.info);
 
-            if (cmp == 0) {
-                // Node with key found, handle deletion cases
+            if (comp == 0) {
+                // key acquired, check and handle delete cases
+
                 if (curr.left == null && curr.right == null) {
-                    // Case 1: Node is a leaf, simply remove it
+                    // case 1 - leaf node, simply remove
                     if (parent == null) {
                         root = null;
-                    } else if (isLeftChild) {
+                    } else if (isLChild) {
                         parent.left = null;
                     } else {
                         parent.right = null;
                     }
                 } else if (curr.left == null) {
-                    // Case 2: Node has no left child, replace with right child
+                    // case 2 - no left child, replace w right
                     if (parent == null) {
                         root = curr.right;
-                    } else if (isLeftChild) {
+                    } else if (isLChild) {
                         parent.left = curr.right;
                     } else {
                         parent.right = curr.right;
                     }
                 } else if (curr.right == null) {
-                    // Case 3: Node has no right child, replace with left child
+                    // case 3 - no right child, replace w left
                     if (parent == null) {
                         root = curr.left;
-                    } else if (isLeftChild) {
+                    } else if (isLChild) {
                         parent.left = curr.left;
                     } else {
                         parent.right = curr.left;
                     }
                 } else {
-                    // Case 4: Node has two children, replace with predecessor or successor
+                    // case 4 - node has two children, replace w pre or suc
                     NodeType<T> successor = curr.right;
                     NodeType<T> successorParent = curr;
 
@@ -144,17 +144,17 @@ public class BinarySearchTree<T extends Comparable<T>> {
                 }
 
                 return;
-            } else if (cmp < 0) {
+            } else if (comp < 0) {
                 parent = curr;
                 curr = curr.left;
-                isLeftChild = true;
+                isLChild = true;
             } else {
                 parent = curr;
                 curr = curr.right;
-            isLeftChild = false;
+            isLChild = false;
             } // if
         } // while
-        System.out.println("Item is not present in the tree");
+//        System.out.println("Item is not present in the tree");
     }
 
 
