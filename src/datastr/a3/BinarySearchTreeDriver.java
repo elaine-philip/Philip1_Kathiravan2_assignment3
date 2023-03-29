@@ -138,12 +138,44 @@ public class BinarySearchTreeDriver {
                         System.out.print(val + " cousins: ");
                         listS.getCousins(val);
                     } // if
-                    // prints original list, deletes item, and prints new list
-
-
-
-
-               } else if (command.equals("q")) {
+                    // prints original list, deletes item, and prints new list (not delete function)
+               } else if (command.equals("d")) {
+                    if (isInt) {
+                        listI.inOrder();
+                        System.out.print("Enter a number to delete: ");
+                        scanCom = new Scanner(System.in);
+                        int val = scanCom.nextInt();
+                        if(listI.isPresent(val) == false) {
+                            System.out.println("This number is not present in the tree");
+                        } else {
+                            listI.delete(val);
+                            listI.inOrder();
+                        }
+                    } else if (isDouble) {
+                        listD.inOrder();
+                        System.out.print("Enter a number to delete: ");
+                        scanCom = new Scanner(System.in);
+                        double val = scanCom.nextDouble();
+                        if(listD.isPresent(val) == false) {
+                            System.out.println("This number is not present in the tree");
+                        } else {
+                            listD.delete(val);
+                            listD.inOrder();
+                        }
+                    } else if (isString) {
+                        listS.inOrder();
+                        System.out.print("Enter a string to delete: ");
+                        scanCom = new Scanner(System.in);
+                        String val = scanCom.next();
+                        if(listS.isPresent(val) == false) {
+                            System.out.println("Item is not present in the tree");
+                        } else {
+                            listS.delete(val);
+                            listS.inOrder();
+                        }
+                    } // if
+                    // prints in-order tree, deletes specified item, and prints new tree (delete())
+                } else if (command.equals("q")) {
                     System.out.println("Exiting the program...");
                     System.exit(0);
                 } else {

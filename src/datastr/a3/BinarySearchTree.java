@@ -164,4 +164,81 @@ public class BinarySearchTree<T extends Comparable<T>> {
         } // while
     } // getSiblings
 
+    public boolean isPresent(T key) {
+        return search(root,key);
+    } // isPresent
+
+    public void delete(T key) {
+        NodeType<T> curr = root;
+        NodeType<T> parent = null;
+        boolean isLChild = false;
+
+        // traverse tree to find node w the right key
+        while (curr != null) {
+            int comp = key.compareTo(curr.info);
+
+            if (comp == 0) {
+                // key acquired, check and handle delete cases
+
+                if (curr.left == null && curr.right == null) {
+                    // case 1 - leaf node, simply remove
+                    if (parent == null) {
+                        root = null;
+                    } else if (isLChild) {
+                        parent.left = null;
+                    } else {
+                        parent.right = null;
+                    }
+                } else if (curr.left == null) {
+                    // case 2 - no left child, replace w right
+                    if (parent == null) {
+                        root = curr.right;
+                    } else if (isLChild) {
+                        parent.left = curr.right;
+                    } else {
+                        parent.right = curr.right;
+                    }
+                } else if (curr.right == null) {
+                    // case 3 - no right child, replace w left
+                    if (parent == null) {
+                        root = curr.left;
+                    } else if (isLChild) {
+                        parent.left = curr.left;
+                    } else {
+                        parent.right = curr.left;
+                    }
+                } else {
+                    // case 4 - node has two children, replace w pre or suc
+                    NodeType<T> successor = curr.right;
+                    NodeType<T> successorParent = curr;
+
+                    while (successor.left != null) {
+                        successorParent = successor;
+                        successor = successor.left;
+                    } // while
+
+                    curr.info = successor.info;
+
+                    if (successorParent.left == successor) {
+                        successorParent.left = successor.right;
+                    } else {
+                        successorParent.right = successor.right;
+                    }
+                }
+
+                return;
+            } else if (comp < 0) {
+                parent = curr;
+                curr = curr.left;
+                isLChild = true;
+            } else {
+                parent = curr;
+                curr = curr.right;
+            isLChild = false;
+            } // if
+        } // while
+
+    } // delete
+
+
 }
