@@ -3,7 +3,12 @@ package datastr.a3;
 public class BinarySearchTree<T extends Comparable<T>> {
 
     private NodeType<T> root;
+<<<<<<< HEAD
     int count = 0;
+=======
+    private int levelCount;
+    T sibling = null;
+>>>>>>> new-branch
 
     public BinarySearchTree() {
         root = null;
@@ -45,11 +50,6 @@ public class BinarySearchTree<T extends Comparable<T>> {
     } // insert
 
 
-
-    public void deleteNode(T item) {
-
-    } // deleteNode
-
     public boolean retrieve(T item) {
         boolean isPresent = search(root, item);
         System.out.println("Cousin count - " + count);
@@ -61,6 +61,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
             return false;
         } // if
     } // retrieve
+    // empty check?
 
     public boolean search(NodeType<T> tree, T item) {
         if (tree == null) { // not present
@@ -68,15 +69,21 @@ public class BinarySearchTree<T extends Comparable<T>> {
         } else if (item.compareTo(tree.info) == 0) { // if present - base case
             return true;
         } else if (item.compareTo(tree.info) < 0) {
+<<<<<<< HEAD
             count++;
             return search(tree.left, item);
         } else {
             count++;
             return search(tree.right, item);
+=======
+             return search(tree.left, item);
+        } else {
+             return search(tree.right, item);
+>>>>>>> new-branch
         } // if
     } //search
 
-    public void inOrderPrint(NodeType<T> tree) {
+   public void inOrderPrint(NodeType<T> tree) {
         if (tree != null) { // empty check
             inOrderPrint(tree.left);
             System.out.print(tree.info);
@@ -90,29 +97,86 @@ public class BinarySearchTree<T extends Comparable<T>> {
         inOrderPrint(root); // recursion call
         System.out.println("");
     } // inOrder
+    // empty check?
+
+    public boolean levNum(NodeType<T> tree, T item) {
+        if (tree == null) { // not present
+            return false;
+        } else if (item.compareTo(tree.info) == 0) { // if present - base case
+            return true;
+        } else if (item.compareTo(tree.info) < 0) {
+            levelCount++;
+            return levNum(tree.left, item);
+        } else {
+            levelCount++;
+            return levNum(tree.right, item);
+        } // if
+     } // levNum
 
 
-    public void getCousins(NodeType<T> node) {
+    public void levelOrder(NodeType<T> tree, int level, T key) {
+        if (tree != null) {
+            if (level == 0) { // base case
 
+                if (sibling == null) { // no siblings
+                    if (tree.info.compareTo(key) != 0) {
+                        System.out.print(tree.info + " ");
+                    } // if
+                } else {
+                    if (tree.info.compareTo(key) != 0 && tree.info.compareTo(sibling) != 0) {
+                        System.out.print(tree.info + " ");
+                    } // if
+                } // if
+                // prints cousins only
+
+            } else { // recursion
+                levelOrder(tree.left, level - 1, key);
+                levelOrder(tree.right, level - 1, key);
+            } // if
+        } // if
+    } // levelOrder
+
+
+    public void getCousins(T key) {
+        levelCount = 0;
+        sibling = null;
+        getSiblings(root, key);
+        levNum(root, key);
+        levelOrder(root, levelCount, key);
+        System.out.println("");
     } // getCousins
 
+    public void getSiblings(NodeType<T> tree, T key) {
+        while (tree != null) {
+            NodeType<T> parent = null;
+            if (key.compareTo(tree.info) < 0) {
+                parent = tree;
+                tree = tree.left;
+            } else if (key.compareTo(tree.info) > 0) {
+                parent = tree;
+                tree = tree.right;
+            } else {
+                break;
+            } // if
+            // finds parent of key node
 
-/**
-    public NodeType<T> getRoot() {
-        return root;
-    } // getRoot
+            if (parent.left != null) {
+                if (key.compareTo(parent.left.info) == 0) { // sibling on right
+                    if (parent.right != null ) { // checks if parent.right is present
+                        sibling = parent.right.info;
+                    } // if
+                } // if
+            } // if
+            if (parent.right != null) {
+                if (key.compareTo(parent.right.info) == 0) { // sibling on right
+                    if (parent.left != null ) { // checks if parent.left is present
+                        sibling = parent.left.info;
+                    } // if
+                } // if
+            } // if
+           // finds sibling
 
-    public void print(NodeType<T> root) {
-        if(root == null) {
-            System.out.println("EMPTY");
-            return;
-        } // if
-
-        System.out.println(root.info + " ");
-        print(root.left);
-        print(root.right);
-    } // print
-
-*/
+        } // while
+    } // getSiblings
 
 }

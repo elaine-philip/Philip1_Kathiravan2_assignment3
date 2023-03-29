@@ -115,78 +115,35 @@ public class BinarySearchTreeDriver {
                         String val = scanCom.next();
                         listS.retrieve(val);
                      } // if
-
-/**
-                } else if (command.equals("l")) {
-                    System.out.print("The length of the list is ");
+              } else if (command.equals("c")) {
                     if (isInt) {
-                        System.out.println(listI.length());
-                    } else if (isDouble) {
-                        System.out.println(listD.length());
-                    } else if (isString) {
-                        System.out.println(listS.length());
-                    } // if
-               } else if (command.equals("d")) {
-                    System.out.print("The list is : ");
-
-                    if (isInt) {
-                        listI.print();
-                        System.out.print("Enter a number to delete: ");
+                        listI.inOrder();
+                        System.out.print("Enter a number: ");
                         scanCom = new Scanner(System.in);
                         int val = scanCom.nextInt();
-                        listI.deleteItem(val);
-                        System.out.print("The list is : ");
-                        listI.print();
-                        listI.printReverse();
+                        System.out.print(val + " cousins: ");
+                        listI.getCousins(val);
                     } else if (isDouble) {
-                        listD.print();
-                        System.out.print("Enter a number to delete: ");
+                        listD.inOrder();
+                        System.out.print("Enter a number: ");
                         scanCom = new Scanner(System.in);
                         double val = scanCom.nextDouble();
-                        listD.deleteItem(val);
-                        System.out.print("The list is : ");
-                        listD.print();
-                        listD.printReverse();
+                        System.out.print(val + " cousins: ");
+                        listD.getCousins(val);
                     } else if (isString) {
-                        listS.print();
-                        System.out.print("Enter a number to delete: ");
+                        listS.inOrder();
+                        System.out.print("Enter a string: ");
                         scanCom = new Scanner(System.in);
                         String val = scanCom.next();
-                        listS.deleteItem(val);
-                        System.out.print("The list is : ");
-                        listS.print();
-                        listS.printReverse();
+                        System.out.print(val + " cousins: ");
+                        listS.getCousins(val);
                     } // if
                     // prints original list, deletes item, and prints new list
-                } else if (command.equals("r")) {
-                    System.out.print("The original list: ");
-                    if (isInt) {
-                        listI.print();
-                        System.out.print("The reversed list: ");
-                        listI.reverseList();
-                        listI.print();
-                    } else if (isDouble) {
-                        listD.print();
-                        System.out.print("The reversed list: ");
-                        listD.reverseList();
-                        listD.print();
-                    } else if (isString) {
-                        listS.print();
-                        System.out.print("The reversed list: ");
-                        listS.reverseList();
-                        listS.print();
-                    } // if
-                } else if (command.equals("t")) {
 
-                    if (isInt) {
-                        listI.printReverse();
-                    } else if (isDouble) {
-                        listD.printReverse();
-                    } else if (isString) {
-                        listS.printReverse();
-                    } // if
-            */
-                } else if (command.equals("q")) {
+
+
+
+               } else if (command.equals("q")) {
                     System.out.println("Exiting the program...");
                     System.exit(0);
                 } else {
