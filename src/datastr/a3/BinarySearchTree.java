@@ -252,6 +252,25 @@ public class BinarySearchTree<T extends Comparable<T>> {
 
     public int countOfNumLeafNodes() {
         return getNumLeafNodes(root);
-    }
+    } // countOfNumLeafNodes
+
+    public void getSingleParent(NodeType<T> node) {
+        if (node == null) {
+            return;
+        } // if
+
+        if ((node.left != null && node.right == null)
+        || (node.left == null && node.right != null)) {
+            System.out.print(node.info + " ");
+        } // if
+
+        getSingleParent(node.left);
+        getSingleParent(node.right);
+    } // getSingleParent
+
+
+    public void outSingleParent() {
+        getSingleParent(root);
+    } // outSingleParents
 
 }

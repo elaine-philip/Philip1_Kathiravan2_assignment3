@@ -195,6 +195,21 @@ public class BinarySearchTreeDriver {
                         listS.inOrder();
                     } // if
                     // counts and outputs the number of leaf nodes in the tree
+                } else if (command.equals("s")) {
+                    if (isInt) {
+                        System.out.print("Single Parents: ");
+                        listI.outSingleParent();
+                        System.out.println();
+                    } else if (isDouble) {
+                        System.out.println("Single Parents: ");
+                        listD.outSingleParent();
+                        System.out.println();
+                    } else if (isString) {
+                        System.out.println("Single Parents: ");
+                        listS.outSingleParent();
+                        System.out.println();
+                    } // if
+                    // finds and prints all single parents
                 } else if (command.equals("q")) {
                     System.out.println("Exiting the program...");
                     System.exit(0);
