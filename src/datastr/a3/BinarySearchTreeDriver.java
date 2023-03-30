@@ -175,6 +175,26 @@ public class BinarySearchTreeDriver {
                         }
                     } // if
                     // prints in-order tree, deletes specified item, and prints new tree (delete())
+                } else if (command.equals("l")) {
+                    if (isInt) {
+                        System.out.println("The number of leaf nodes are "
+                        + listI.countOfNumLeafNodes());
+                    } else if (isDouble) {
+                        listD.inOrder();
+                        System.out.print("Enter a number to insert: ");
+                        scanCom = new Scanner(System.in);
+                        double val = scanCom.nextDouble();
+                        listD.insert(val);
+                        listD.inOrder();
+                    } else if (isString) {
+                        listS.inOrder();
+                        System.out.print("Enter a string to insert: ");
+                        scanCom = new Scanner(System.in);
+                        String val = scanCom.next();
+                        listS.insert(val);
+                        listS.inOrder();
+                    } // if
+                    // counts and outputs the number of leaf nodes in the tree
                 } else if (command.equals("q")) {
                     System.out.println("Exiting the program...");
                     System.exit(0);

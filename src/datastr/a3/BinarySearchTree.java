@@ -70,7 +70,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
         } // if
     } //search
 
-   public void inOrderPrint(NodeType<T> tree) {
+    public void inOrderPrint(NodeType<T> tree) {
         if (tree != null) { // empty check
             inOrderPrint(tree.left);
             System.out.print(tree.info);
@@ -97,7 +97,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
             levelCount++;
             return levNum(tree.right, item);
         } // if
-     } // levNum
+    } // levNum
 
     public void levelOrder(NodeType<T> tree, int level, T key) {
         if (tree != null) {
@@ -159,7 +159,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
                     } // if
                 } // if
             } // if
-           // finds sibling
+            // finds sibling
 
         } // while
     } // getSiblings
@@ -234,11 +234,24 @@ public class BinarySearchTree<T extends Comparable<T>> {
             } else {
                 parent = curr;
                 curr = curr.right;
-            isLChild = false;
+                isLChild = false;
             } // if
         } // while
-
     } // delete
 
+
+    public int getNumLeafNodes(NodeType<T> root) {
+        if (root == null) {
+            return 0;
+        } // if
+        if (root.left == null && root.right == null) {
+            return 1;
+        } // if
+        return getNumLeafNodes(root.left) + getNumLeafNodes(root.right);
+    } // getNumLeafNodes
+
+    public int countOfNumLeafNodes() {
+        return getNumLeafNodes(root);
+    }
 
 }
