@@ -18,7 +18,22 @@ getCousins()-
      method which traverses through the tree recursivley until it reaches the levelCount level. Then it checks that the
      tree isn't equal to the key or the sibling and if so prints it.
 
+
+    levNum: T(n) = T(n/2) + 1
+    Master Therom:
+    a = 1, b = 2, d = 0
+    1 = 2^0
+    0(log(n))
+
+    levOrder: T(n) = T(n-1) + 1
+    Master Theorm:
+    a = 1, b = 1, d = 0
+    1 = 1
+    O(n)
+
     Big O: getSibling is O(log(n)), levNum is O(log(n)), and levelOrder is O(n). So the getCousin is O(n).
+
+
 
 Kavya Kathiravan(krk08454@uga.edu):
 

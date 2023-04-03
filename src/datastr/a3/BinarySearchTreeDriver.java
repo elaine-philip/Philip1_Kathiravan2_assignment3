@@ -180,19 +180,13 @@ public class BinarySearchTreeDriver {
                         System.out.println("The number of leaf nodes are "
                         + listI.countOfNumLeafNodes());
                     } else if (isDouble) {
-                        listD.inOrder();
-                        System.out.print("Enter a number to insert: ");
-                        scanCom = new Scanner(System.in);
-                        double val = scanCom.nextDouble();
-                        listD.insert(val);
-                        listD.inOrder();
+                        System.out.println("The number of leaf nodes are "
+                        + listD.countOfNumLeafNodes());
+
                     } else if (isString) {
-                        listS.inOrder();
-                        System.out.print("Enter a string to insert: ");
-                        scanCom = new Scanner(System.in);
-                        String val = scanCom.next();
-                        listS.insert(val);
-                        listS.inOrder();
+                        System.out.println("The number of leaf nodes are "
+                        + listS.countOfNumLeafNodes());
+
                     } // if
                     // counts and outputs the number of leaf nodes in the tree
                 } else if (command.equals("s")) {
@@ -201,11 +195,11 @@ public class BinarySearchTreeDriver {
                         listI.outSingleParent();
                         System.out.println();
                     } else if (isDouble) {
-                        System.out.println("Single Parents: ");
+                        System.out.print("Single Parents: ");
                         listD.outSingleParent();
                         System.out.println();
                     } else if (isString) {
-                        System.out.println("Single Parents: ");
+                        System.out.print("Single Parents: ");
                         listS.outSingleParent();
                         System.out.println();
                     } // if
