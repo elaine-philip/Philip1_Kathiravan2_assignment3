@@ -146,7 +146,7 @@ public class BinarySearchTreeDriver {
                         scanCom = new Scanner(System.in);
                         int val = scanCom.nextInt();
                         if(listI.isPresent(val) == false) {
-                            System.out.println("This number is not present in the tree");
+                            System.out.println("The number is not present in the tree");
                         } else {
                             listI.delete(val);
                             listI.inOrder();
@@ -157,7 +157,7 @@ public class BinarySearchTreeDriver {
                         scanCom = new Scanner(System.in);
                         double val = scanCom.nextDouble();
                         if(listD.isPresent(val) == false) {
-                            System.out.println("This number is not present in the tree");
+                            System.out.println("The number is not present in the tree");
                         } else {
                             listD.delete(val);
                             listD.inOrder();
